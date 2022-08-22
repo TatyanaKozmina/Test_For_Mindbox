@@ -1,0 +1,45 @@
+Структура базы данных
+
+Product
+
+Id(int)	Name varchar(50)
+1	Перчатки
+2	Мяч
+3	Карандаш
+4	Пылесос
+5	Попкорн
+6	Вино
+
+Category
+
+Id(int)	Name varchar(50)
+1       Товары для дома
+2	Канцелярия
+3	Перекус
+4	Спорт
+5	Для автомобиля
+6	Дети
+7	Обувь
+
+ProductCategory
+
+Product_Id(int)	Category_Id(int)
+1		1
+1		5
+2		4
+2		6
+3		1
+3		2
+3		6
+4		1
+4		5
+5		3
+5		6
+
+------------------------------------------------------------------------------------------------------------
+
+Запрос
+
+SELECT p.Name AS ProductName, c.Name AS CategoryName FROM Product AS p
+LEFT JOIN ProductCategory AS pc ON p.Id = pc.Product_Id
+LEFT JOIN Category AS c ON pc.Category_Id = c.id
